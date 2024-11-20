@@ -15,17 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include # 3.
 # 1.
 # from machine_learning import views as v1
 # from blogs import views as v2
-#2. another wat to import
-from machine_learning.views import machine_learning as ml, deep_learning as dpl1, about_us as abt1
+# 2. another wat to import
+# from machine_learning.views import machine_learning as ml, deep_learning as dpl1, about_us as abt1
+# from about_us.views import about_us
+# from blogs.views import blog1
+# from data_analysis.views import data_analysis
+# from deep_learning.views import deep_learning
 
-from about_us.views import about_us
-from blogs.views import blog1
-from data_analysis.views import data_analysis
-from deep_learning.views import deep_learning
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 1.
@@ -34,11 +34,16 @@ urlpatterns = [
     # path('about/',v1.about_us),
     # path('blogs/',v2.blog1)
     # 2.
-    path('',ml),
-    path('dpl1/',dpl1),
-    path('about1/',abt1),
-    path('blg/',blog1),
-    path('about/',about_us),
-    path('dpl/',deep_learning),
-    path('analysis/',data_analysis),
+    # path('',ml),
+    # path('dpl1/',dpl1),
+    # path('about1/',abt1),
+    # path('blg/',blog1),
+    # path('about/',about_us),
+    # path('dpl/',deep_learning),
+    # path('analysis/',data_analysis),
+    # 3.
+    path('mlp/',include('machine_learning.urls')),
+    path('dpl/',include('deep_learning.urls')),
+    path('about/',include('about_us.urls')),
+    path('blg/',include('blogs.urls')),
 ]

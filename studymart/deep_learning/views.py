@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def deep_learning(req):
-    return HttpResponse("<h1>This is deep learning platform</h1>")
+    return render(req,'deep_learning/deep_learning.html')
